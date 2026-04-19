@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "hooks": {
+    "userPromptSubmitted": [
+      {
+        "type": "command",
+        "bash": "node dist/hook.js userPromptSubmitted",
+        "powershell": "node dist/hook.js userPromptSubmitted",
+        "timeoutSec": 10
+      }
+    ],
+    "postToolUse": [
+      {
+        "type": "command",
+        "bash": "node dist/hook.js postToolUse",
+        "powershell": "node dist/hook.js postToolUse",
+        "timeoutSec": 15
+      }
+    ],
+    "agentStop": [
+      {
+        "type": "command",
+        "bash": "node dist/hook.js agentStop",
+        "powershell": "node dist/hook.js agentStop",
+        "timeoutSec": 10
+      }
+    ]
+  }
+}

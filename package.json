@@ -1,0 +1,16 @@
+{
+  "name": "memory-hook",
+  "version": "0.1.0",
+  "description": "GitHub Copilot CLI hook plugin that ingests important session memories.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test test/*.test.js",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.17",
+    "typescript": "^5.8.0"
+  }
+}

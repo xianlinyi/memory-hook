@@ -1,0 +1,10 @@
+import type { FlowEvent, MemoryCandidate } from "./types.js";
+export declare function stateFileForCwd(stateDir: string, cwd: string): string;
+export declare function flowFileForCwd(stateDir: string, cwd: string): string;
+export declare function readCandidates(stateDir: string, cwd: string): Promise<MemoryCandidate[]>;
+export declare function appendCandidate(stateDir: string, candidate: MemoryCandidate): Promise<void>;
+export declare function replaceCandidates(stateDir: string, cwd: string, candidates: MemoryCandidate[]): Promise<void>;
+export declare function hasCandidate(candidates: MemoryCandidate[], evidenceHash: string): boolean;
+export declare function appendFlowEvent(stateDir: string, event: FlowEvent): Promise<void>;
+export declare function readFlowEvents(stateDir: string, cwd: string): Promise<FlowEvent[]>;
+export declare function clearFlowEvents(stateDir: string, cwd: string): Promise<void>;

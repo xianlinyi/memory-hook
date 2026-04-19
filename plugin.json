@@ -1,0 +1,8 @@
+{
+  "name": "memory-hook",
+  "description": "Captures important GitHub Copilot CLI session facts and ingests them into agent-memory.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "keywords": ["memory", "hooks", "copilot"],
+  "hooks": "hooks.json"
+}
