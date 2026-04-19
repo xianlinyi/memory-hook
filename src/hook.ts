@@ -2,6 +2,7 @@
 import { loadConfig } from "./config.js";
 import { handleHook } from "./core.js";
 import { debugLog, traceLog } from "./log.js";
+import { runStartupCheck } from "./startup.js";
 import { firstUsefulLine, hasSensitiveContent, trimNoise, truncate } from "./text.js";
 import type { HookName } from "./types.js";
 
@@ -140,6 +141,10 @@ async function main(): Promise<void> {
   } catch (error) {
     await debugLog(config.stateDir, `invalid JSON for ${hookName}: ${(error as Error).message}`);
     return;
+  }
+
+  if (hookName === "userPromptSubmitted") {
+    await runStartupCheck(config.stateDir);
   }
 
   await traceLog(config.stateDir, "hook.received", {

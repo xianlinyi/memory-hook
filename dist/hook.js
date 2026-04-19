@@ -2,6 +2,7 @@
 import { loadConfig } from "./config.js";
 import { handleHook } from "./core.js";
 import { debugLog, traceLog } from "./log.js";
+import { runStartupCheck } from "./startup.js";
 import { firstUsefulLine, hasSensitiveContent, trimNoise, truncate } from "./text.js";
 const HOOKS = new Set(["userPromptSubmitted", "postToolUse", "agentStop"]);
 async function readStdin() {
@@ -136,6 +137,9 @@ async function main() {
     catch (error) {
         await debugLog(config.stateDir, `invalid JSON for ${hookName}: ${error.message}`);
         return;
+    }
+    if (hookName === "userPromptSubmitted") {
+        await runStartupCheck(config.stateDir);
     }
     await traceLog(config.stateDir, "hook.received", {
         hook: hookName,
